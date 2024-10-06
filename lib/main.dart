@@ -18,10 +18,11 @@ List<String> listMoney = [
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
   'Travel',
-  'uz.smart.travelcarsdrivers.util.service',
+  'uz.smart.travelcardrivers.util.service',
   importance: Importance.high,
   playSound: true,
 );
+
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();

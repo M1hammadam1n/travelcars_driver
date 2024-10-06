@@ -8,7 +8,7 @@ import 'package:rxdart/rxdart.dart';
 class OnlineTaskViewBloc {
   Repository repository = Repository();
 
-  final _taskFetch = PublishSubject<OnlineTaskModel>();
+  final _taskFetch = BehaviorSubject<OnlineTaskModel>();
 
   Stream<OnlineTaskModel> get oneTask => _taskFetch.stream;
 

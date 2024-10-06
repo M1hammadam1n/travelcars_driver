@@ -9,7 +9,7 @@ import 'package:rxdart/rxdart.dart';
 class ListBloc {
   Repository repository = Repository();
 
-  final _listFetch = PublishSubject<List<CalendarViewModel>>();
+  final _listFetch = BehaviorSubject<List<CalendarViewModel>>();
 
   Stream<List<CalendarViewModel>> get listFeedBack => _listFetch.stream;
 

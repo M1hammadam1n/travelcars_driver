@@ -7,7 +7,7 @@ import 'package:rxdart/rxdart.dart';
 
 class TaskBloc {
   Repository repository = Repository();
-  final _tasksFetch = PublishSubject<TaskModel>();
+  final _tasksFetch = BehaviorSubject<TaskModel>();
 
   Stream<TaskModel> get taskFeedback => _tasksFetch.stream;
 

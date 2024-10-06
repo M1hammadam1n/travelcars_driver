@@ -32,14 +32,12 @@ dependencies:
 
   animated_bottom_navigation_bar: ^0.3.2
   auto_size_text: ^3.0.0
-  circular_reveal_animation: ^2.0.0
-  table_calendar: ^3.0.4
   cupertino_icons: ^1.0.2
   rxdart: ^0.27.3
   shimmer: ^2.0.0
   flutter_svg: ^0.22.0
   fluttertoast: ^8.0.9
-  carousel_slider: ^4.0.0
+  carousel_slider: ^5.0.0
   firebase_core: ^1.13.1
   firebase_messaging: ^11.2.11
   flutter_local_notifications: ^9.4.0
@@ -47,6 +45,8 @@ dependencies:
   http: ^1.2.1
   flutter_secure_storage: ^8.1.0
   shared_preferences: ^2.2.3
+  table_calendar: ^3.1.2
+  circular_reveal_animation: ^2.0.1
 
 
 
