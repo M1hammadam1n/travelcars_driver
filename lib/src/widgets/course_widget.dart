@@ -73,8 +73,16 @@ class CourseWidget extends StatelessWidget {
                                           CrossAxisAlignment.center,
                                       children: [
                                         Container(
-                                          height: 40 * h,
-                                          width: 40 * h,
+                                          height: 5 *
+                                              MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.01,
+                                          width: 5 *
+                                              MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.01,
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(24),
@@ -95,7 +103,10 @@ class CourseWidget extends StatelessWidget {
                                                 fontFamily: AppTheme.fontFamily,
                                                 fontWeight: FontWeight.w600,
                                                 fontStyle: FontStyle.normal,
-                                                fontSize: 28 * h,
+                                                fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.028, // Адаптация шрифта
                                                 letterSpacing: 0.7,
                                                 color: AppTheme.white,
                                               ),
@@ -175,7 +186,7 @@ class CourseWidget extends StatelessWidget {
                             ],
                           ),
                           SizedBox(
-                            height: 0 * h,
+                            height: 2 * h,
                           ),
                           Row(
                             children: [
@@ -223,3 +234,5 @@ class CourseWidget extends StatelessWidget {
     );
   }
 }
+
+

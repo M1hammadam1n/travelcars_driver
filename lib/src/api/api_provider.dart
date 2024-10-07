@@ -76,7 +76,7 @@ class ApiProvider {
           .get(
         Uri.parse(url),
         headers: header,
-      ).timeout(Duration(seconds: 30));
+      ).timeout(Duration(seconds: 0));
       return _result(response);
     } on TimeoutException catch (_) {
       print("$_result(info nbu)");
@@ -218,7 +218,7 @@ class ApiProvider {
     );
   }
 
-  ///profile edit
+  //profile edit
 Future<HttpResult> setEdit(
     String currentPassword,
     String newPass,

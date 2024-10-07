@@ -18,7 +18,7 @@ List<String> listMoney = [
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
   'Travel',
-  'uz.smart.travelcardrivers.util.service',
+  'uz.smart.travelcardrivers',
   importance: Importance.high,
   playSound: true,
 );
