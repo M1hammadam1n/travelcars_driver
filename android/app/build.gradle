@@ -50,7 +50,7 @@ android {
         applicationId "uz.smart.travelcardrivers"
         minSdkVersion 21
         targetSdkVersion 32
-        versionCode 4
+        versionCode 7
         versionName '1.0.0'
     }
 

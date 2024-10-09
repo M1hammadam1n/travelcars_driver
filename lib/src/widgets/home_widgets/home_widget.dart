@@ -9,17 +9,11 @@ Widget getHomeTasks(BuildContext context, String date, String title) {
   return Container(
     width: 200,
     padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 10),
-    margin: const EdgeInsets.symmetric(horizontal: 12),
+    margin: const EdgeInsets.symmetric(horizontal: 13),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(21),
       color: AppTheme.white,
-      boxShadow: const [
-        BoxShadow(
-          offset: Offset(0, 0),
-          blurRadius: 10,
-          color: Color.fromRGBO(0, 0, 0, 0.1),
-        )
-      ],
+      
     ),
     child: Column(
       children: [
@@ -32,17 +26,20 @@ Widget getHomeTasks(BuildContext context, String date, String title) {
             fontSize: 16,
             height: 1.4,
             letterSpacing: 0.4,
-            color: AppTheme.gray,
+            color: AppTheme.black,
           ),
         ),
         const SizedBox(
-          height: 4,
+          height: 10,
         ),
         Container(
-          height: 1,
+          height: 1.5,
           width: MediaQuery.of(context).size.width,
           margin: const EdgeInsets.symmetric(horizontal: 15),
-          color: AppTheme.greyE8,
+          color: AppTheme.lightBlack,
+        ),
+        const SizedBox(
+          height: 10,
         ),
         Text(
           title,
@@ -55,7 +52,7 @@ Widget getHomeTasks(BuildContext context, String date, String title) {
             fontSize: 18,
             height: 1.38,
             letterSpacing: 0.2,
-            color: AppTheme.black36,
+            color: AppTheme.black,
           ),
         ),
       ],
@@ -72,7 +69,7 @@ Widget getContainer(BuildContext context, String text, int count, Color color,
       onChange(0);
     },
     child: Container(
-      height: 33 * h,
+      height: 48 * h,
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.only(bottom: 10 * h),
       padding: EdgeInsets.symmetric(horizontal: 10 * w, vertical: 4 * h),
@@ -88,8 +85,8 @@ Widget getContainer(BuildContext context, String text, int count, Color color,
         ],
       ),
       child: Row(
-        children: [
-          RichText(
+      children: [
+          RichText(      
             text: TextSpan(
               text: "",
               style: TextStyle(
@@ -99,7 +96,7 @@ Widget getContainer(BuildContext context, String text, int count, Color color,
                 fontSize: 18 * h,
                 height: 1.38 * h,
                 letterSpacing: 0.2,
-                color: AppTheme.white,
+                color: const Color.fromARGB(255, 255, 255, 255),
               ),
               children: <TextSpan>[
                 TextSpan(

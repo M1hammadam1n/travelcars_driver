@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_travelcars_driver/src/theme/app_theme.dart';
 import 'package:flutter_travelcars_driver/src/utils/utils.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -7,7 +8,7 @@ class ItemCalendar extends StatelessWidget {
   final double h;
   final double w;
   final DateTime selectedDay;
-  final Function(DateTime dateTime1,DateTime dateTime2) onSelectedDay;
+  final Function(DateTime dateTime1, DateTime dateTime2) onSelectedDay;
   final Function(DateTime day) change;
 
   const ItemCalendar({
@@ -64,7 +65,7 @@ class ItemCalendar extends StatelessWidget {
                   "${getMonth(selectedDay.month)} ${selectedDay.year} г.",
                   style: TextStyle(
                     fontFamily: AppTheme.fontFamily,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w700,
                     fontStyle: FontStyle.normal,
                     fontSize: 18 * h,
                     height: 21 / 18 * h,
@@ -80,8 +81,8 @@ class ItemCalendar extends StatelessWidget {
                     ));
                   },
                   child: SizedBox(
-                    height: 24 * h,
-                    width: 24 * w,
+                    height: 25.5 * h,
+                    width: 25.5 * w,
                     child: const Icon(
                       Icons.navigate_next,
                     ),
@@ -105,7 +106,7 @@ class ItemCalendar extends StatelessWidget {
               firstDay: DateTime(2021, 12, 12),
               lastDay: DateTime(2099, 12, 21),
               calendarStyle: CalendarStyle(
-                cellMargin: const EdgeInsets.all(4),
+                cellMargin: const EdgeInsets.all(2.5),
                 todayDecoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppTheme.blue.withOpacity(0.4),
@@ -113,6 +114,26 @@ class ItemCalendar extends StatelessWidget {
                 selectedDecoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppTheme.blue,
+                ),
+                weekendTextStyle: TextStyle(
+                  fontWeight: FontWeight.w600, 
+                  fontSize: 16 * h, 
+                ),
+                defaultTextStyle: TextStyle(
+                  fontWeight: FontWeight.w600, 
+                  fontSize: 16 * h, 
+                ),
+                selectedTextStyle: TextStyle(
+                    fontWeight:
+                        FontWeight.w600, 
+                    fontSize: 16 * h,
+                    color: AppTheme.white 
+                    ),
+                outsideTextStyle: TextStyle(
+                  fontWeight: FontWeight
+                      .w400, 
+                  fontSize: 16 * h,
+                  color: AppTheme.black36, 
                 ),
               ),
             ),

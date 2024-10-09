@@ -147,10 +147,10 @@ class _TasksScreenState extends State<TasksScreen> {
                                             data[index].car,
                                             style: TextStyle(
                                               fontFamily: AppTheme.fontFamily,
-                                              fontWeight: FontWeight.normal,
+                                              fontWeight: FontWeight.w500,
                                               fontSize: 12 * h,
                                               height: 1.4,
-                                              color: AppTheme.gray,
+                                              color: AppTheme.black36,
                                             ),
                                           ),
                                         ),
@@ -168,7 +168,7 @@ class _TasksScreenState extends State<TasksScreen> {
                                         "${data[index].cityFrom} - ${data[index].cityTo} ${data[index].reverse == 1 ? "- \n ${data[index].cityFrom}" : ""}",
                                         style: TextStyle(
                                           fontFamily: AppTheme.fontFamily,
-                                          fontWeight: FontWeight.normal,
+                                          fontWeight: FontWeight.w500,
                                           fontSize: 14 * h,
                                           height: 1.5,
                                           color: AppTheme.black,
@@ -181,7 +181,7 @@ class _TasksScreenState extends State<TasksScreen> {
                                         data[index].userName,
                                         style: TextStyle(
                                           fontFamily: AppTheme.fontFamily,
-                                          fontWeight: FontWeight.normal,
+                                          fontWeight: FontWeight.w400,
                                           fontSize: 14 * h,
                                           height: 1.5,
                                           color: AppTheme.black,
@@ -192,10 +192,10 @@ class _TasksScreenState extends State<TasksScreen> {
                                       "Дата поездки: ${data[index].date}",
                                       style: TextStyle(
                                         fontFamily: AppTheme.fontFamily,
-                                        fontWeight: FontWeight.normal,
+                                        fontWeight: FontWeight.w600,
                                         fontSize: 14 * h,
                                         height: 1.5,
-                                        color: AppTheme.gray,
+                                        color: AppTheme.black36,
                                       ),
                                     ),
                                   ],

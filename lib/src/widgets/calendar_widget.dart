@@ -46,7 +46,7 @@ class TaskWidget extends StatelessWidget {
                 text: "",
                 style: const TextStyle(
                   fontFamily: AppTheme.fontFamily,
-                  fontWeight: FontWeight.normal,
+                  fontWeight: FontWeight.w600,
                   fontStyle: FontStyle.normal,
                   fontSize: 14,
                   height: 1.38,
@@ -73,9 +73,9 @@ class TaskWidget extends StatelessWidget {
               "Статус",
               style: TextStyle(
                 fontFamily: AppTheme.fontFamily,
-                fontWeight: FontWeight.normal,
+                fontWeight: FontWeight.w700,
                 fontStyle: FontStyle.normal,
-                fontSize: 12,
+                fontSize: 15,
                 height: 14 / 12,
                 letterSpacing: 0.2,
                 color: data.status == 1 && type != 1
@@ -88,12 +88,12 @@ class TaskWidget extends StatelessWidget {
               data.status == 1 && type != 1 ? "Свободен:" : "Занят:",
               style: const TextStyle(
                 fontFamily: AppTheme.fontFamily,
-                fontWeight: FontWeight.normal,
+                fontWeight: FontWeight.w600,
                 fontStyle: FontStyle.normal,
                 fontSize: 12,
                 height: 14 / 12,
                 letterSpacing: 0.2,
-                color: AppTheme.gray,
+                color: AppTheme.black,
               ),
             ),
             Transform.scale(
@@ -150,13 +150,13 @@ Widget getCarNumber(BuildContext context, String number) {
     ),
     child: Center(
       child: Text(
-        number,
+        '  $number  ',
         style: TextStyle(
           fontFamily: AppTheme.fontFamily,
-          fontWeight: FontWeight.normal,
+          fontWeight: FontWeight.w600,
           fontStyle: FontStyle.normal,
-          fontSize: 10 * h,
-          height: 14 / 12 * h,
+          fontSize: 13 * h,
+          height: 15 / 12 * h,
           letterSpacing: 0.2,
           color: AppTheme.white,
         ),

@@ -27,9 +27,9 @@ Widget getWeather(
         title,
         style: TextStyle(
           fontFamily: AppTheme.fontFamily,
-          fontWeight: FontWeight.normal,
+          fontWeight: FontWeight.w600,
           fontStyle: FontStyle.normal,
-          fontSize: 10 * h,
+          fontSize: 11 * h,
           height: 1.5 * h,
           letterSpacing: 0.3,
           color: AppTheme.black,

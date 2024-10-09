@@ -9,7 +9,6 @@ import 'package:flutter_travelcars_driver/src/theme/app_theme.dart';
 import 'package:flutter_travelcars_driver/src/widgets/calendar_widget.dart';
 import 'package:flutter_travelcars_driver/src/widgets/item_calendar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'dart:math' as math;
 import '../../../model/api_model/http_result.dart';
 import '../../../model/api_model/status_model.dart';
@@ -95,7 +94,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                               horizontal: 8 * w, vertical: 16 * h),
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(21 * h),
+                            borderRadius: BorderRadius.circular(21.5 * h),
                             color: AppTheme.lightGray,
                           ),
                           child: Container(
@@ -144,6 +143,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                         setState(() {});
                                       },
                                       child: AnimatedContainer(
+                                        height: 48,
                                         duration:
                                             const Duration(milliseconds: 500),
                                         curve: Curves.ease,
@@ -157,7 +157,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                                   ? AppTheme.white
                                                   : AppTheme.green,
                                           border: Border.all(
-                                            width: 1,
+                                            width: 1.8,
                                             color: list[index].bookingId == 1
                                                 ? Colors.red
                                                 : AppTheme.green,
@@ -171,9 +171,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                                 style: TextStyle(
                                                   fontFamily:
                                                       AppTheme.fontFamily,
-                                                  fontWeight: FontWeight.normal,
+                                                  fontWeight: FontWeight.w600,
                                                   fontStyle: FontStyle.normal,
-                                                  fontSize: 10 * h,
+                                                  fontSize: 12 * h,
                                                   height: 14 / 12 * h,
                                                   letterSpacing: 0.2,
                                                   color: close[index]
@@ -193,7 +193,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                                   color: close[index]
                                                       ? AppTheme.green
                                                       : AppTheme.white,
-                                                  size: 12,
+                                                  size: 15,
                                                 ),
                                               ),
                                             ],
@@ -206,12 +206,15 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                       "Отключить все маршруты:",
                                       style: TextStyle(
                                         fontFamily: AppTheme.fontFamily,
-                                        fontWeight: FontWeight.normal,
+                                        fontWeight: FontWeight.w600,
                                         fontStyle: FontStyle.normal,
-                                        fontSize: 11 * h,
-                                        height: 14 / 12 * h,
+                                        fontSize: MediaQuery.of(context)
+                                                .size
+                                                .width *
+                                            0.035, 
+                                        height: 1.2,
                                         letterSpacing: 0.2,
-                                        color: AppTheme.gray,
+                                        color: AppTheme.black,
                                       ),
                                     ),
                                     Transform.scale(

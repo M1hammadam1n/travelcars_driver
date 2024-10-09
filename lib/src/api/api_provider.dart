@@ -6,7 +6,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../model/api_model/http_result.dart';
 
 class ApiProvider {
-  static Duration duration = const Duration(seconds: 60);
+  static Duration duration = const Duration(seconds: 0);
   String baseUrl = "https://api.travelcars.uz";
   static const _secureStorage = FlutterSecureStorage();
 
@@ -68,25 +68,24 @@ class ApiProvider {
   }
 
   //getResponse
-  static Future<HttpResult> _getResponse(String url, bool head, {Map<String, String>? additionalHeaders}) async {
-    var header = await _header(head, additionalHeaders: additionalHeaders);
-    print("GET request to $url with headers: $header");
-    try {
-      http.Response response = await http
-          .get(
-        Uri.parse(url),
-        headers: header,
-      ).timeout(Duration(seconds: 0));
-      return _result(response);
-    } on TimeoutException catch (_) {
-      print("$_result(info nbu)");
-      return HttpResult(
-        isSuccess: false,
-        statusCode: -1,
-        result: "Internet error",
-      );
-    }
+static Future<HttpResult> _getResponse(String url, bool head, {Map<String, String>? additionalHeaders}) async {
+  var header = await _header(head, additionalHeaders: additionalHeaders);
+  print("GET request to $url with headers: $header");
+  try {
+    http.Response response = await http.get(Uri.parse(url), headers: header).timeout(Duration(seconds: 30));
+    return _result(response);
+  } on TimeoutException {
+    print("Request to $url timed out");
+    return HttpResult(isSuccess: false, statusCode: -1, result: "Request timed out");
+  } on SocketException {
+    print("No internet connection");
+    return HttpResult(isSuccess: false, statusCode: -1, result: "No internet connection");
+  } catch (e) {
+    print("Unexpected error: $e");
+    return HttpResult(isSuccess: false, statusCode: -1, result: "Unexpected error: $e");
   }
+}
+
   
 
 

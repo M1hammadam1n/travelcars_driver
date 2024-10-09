@@ -98,7 +98,7 @@ class CourseWidget extends StatelessWidget {
                                                   ? "\$"
                                                   : data[j].code == "EUR"
                                                       ? "€"
-                                                      : "P",
+                                                      : "₽",
                                               style: TextStyle(
                                                 fontFamily: AppTheme.fontFamily,
                                                 fontWeight: FontWeight.w600,
@@ -106,7 +106,7 @@ class CourseWidget extends StatelessWidget {
                                                 fontSize: MediaQuery.of(context)
                                                         .size
                                                         .height *
-                                                    0.028, // Адаптация шрифта
+                                                    0.028, 
                                                 letterSpacing: 0.7,
                                                 color: AppTheme.white,
                                               ),
@@ -126,7 +126,7 @@ class CourseWidget extends StatelessWidget {
                                               data[j].title,
                                               style: TextStyle(
                                                 fontFamily: AppTheme.fontFamily,
-                                                fontWeight: FontWeight.normal,
+                                                fontWeight: FontWeight.w600,
                                                 fontStyle: FontStyle.normal,
                                                 fontSize: 14,
                                                 height: 1.5 * h,
@@ -138,7 +138,7 @@ class CourseWidget extends StatelessWidget {
                                               data[j].code,
                                               style: TextStyle(
                                                 fontFamily: AppTheme.fontFamily,
-                                                fontWeight: FontWeight.normal,
+                                                fontWeight: FontWeight.w500,
                                                 fontStyle: FontStyle.normal,
                                                 fontSize: 14 * h,
                                                 height: 1.5 * h,
@@ -161,7 +161,7 @@ class CourseWidget extends StatelessWidget {
                                     data[j].cbPrice,
                                     style: TextStyle(
                                       fontFamily: AppTheme.fontFamily,
-                                      fontWeight: FontWeight.normal,
+                                      fontWeight: FontWeight.w800,
                                       fontStyle: FontStyle.normal,
                                       fontSize: 14 * h,
                                       height: 1.5 * h,
@@ -173,12 +173,12 @@ class CourseWidget extends StatelessWidget {
                                     data[j].date,
                                     style: TextStyle(
                                       fontFamily: AppTheme.fontFamily,
-                                      fontWeight: FontWeight.normal,
+                                      fontWeight: FontWeight.w600,
                                       fontStyle: FontStyle.normal,
                                       fontSize: 10 * h,
                                       height: 1.5 * h,
                                       letterSpacing: 0.3,
-                                      color: AppTheme.green,
+                                      color: AppTheme.greenhomebutton,
                                     ),
                                   ),
                                 ],
@@ -186,7 +186,7 @@ class CourseWidget extends StatelessWidget {
                             ],
                           ),
                           SizedBox(
-                            height: 2 * h,
+                            height: 3.5 * h,
                           ),
                           Row(
                             children: [
@@ -195,9 +195,9 @@ class CourseWidget extends StatelessWidget {
                                   "ПОКУПКА: ${data[j].nbuBuyPrice}",
                                   style: TextStyle(
                                     fontFamily: AppTheme.fontFamily,
-                                    fontWeight: FontWeight.normal,
+                                    fontWeight: FontWeight.w600,
                                     fontStyle: FontStyle.normal,
-                                    fontSize: 10 * h,
+                                    fontSize: 11.5 * h,
                                     height: 15 / 12 * h,
                                     //letterSpacing: 0.3,
                                     color: AppTheme.black,
@@ -208,9 +208,9 @@ class CourseWidget extends StatelessWidget {
                                 "ПРОДАЖА: ${data[j].nbuCellPrice}",
                                 style: TextStyle(
                                   fontFamily: AppTheme.fontFamily,
-                                  fontWeight: FontWeight.normal,
+                                  fontWeight: FontWeight.w600,
                                   fontStyle: FontStyle.normal,
-                                  fontSize: 10 * h,
+                                  fontSize: 11.5 * h,
                                   height: 15 / 12 * h,
                                   //letterSpacing: 0.3,
                                   color: AppTheme.black,
@@ -219,7 +219,7 @@ class CourseWidget extends StatelessWidget {
                             ],
                           ),
                           SizedBox(
-                            height: 10 * h,
+                            height: 12 * h,
                           ),
                           i != 2 ? const MySeparator() : Container(),
                           SizedBox(

@@ -68,7 +68,7 @@ class _TaskScreenState extends State<TaskScreen> with TickerProviderStateMixin {
                 ],
                 controller: _tabController,
                 onTap: (s) {
-                  //historyBloc.getAllHistory(typeData[_tabController!.index], 1);
+                  // historyBloc.getAllHistory(typeData[_tabController!.index], 1);
                 },
                 indicator: BoxDecoration(
                   borderRadius: BorderRadius.circular(21 * h),
@@ -84,7 +84,7 @@ class _TaskScreenState extends State<TaskScreen> with TickerProviderStateMixin {
                 ),
                 unselectedLabelStyle: TextStyle(
                   fontFamily: AppTheme.fontFamily,
-                  fontWeight: FontWeight.normal,
+                  fontWeight: FontWeight.w600,
                   fontSize: 14 * h,
                   height: 1.38 * h,
                   color: AppTheme.blue,

@@ -21,6 +21,7 @@ class AppTheme {
   static const Color lightGrayEB = Color(0xFFEBEBEB);
   static const Color bgTextFrom = Color(0xFFFAFBFC);
   static const Color hint = Color.fromRGBO(54, 69, 90, 0.6);
+  static const Color greenhomebutton = Color.fromARGB(255, 46, 171, 46);
 
   ///shimmer
   static const passiveSubtitle = Color(0xFFBBBBBB);

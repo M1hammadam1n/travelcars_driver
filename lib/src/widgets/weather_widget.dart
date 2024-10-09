@@ -69,7 +69,7 @@ class WeatherWidget extends StatelessWidget {
               "Сегодня, ${Utils.getDateDay(DateTime.now())}",
               style: TextStyle(
                 fontFamily: AppTheme.fontFamily,
-                fontWeight: FontWeight.normal,
+                fontWeight: FontWeight.w800,
                 fontStyle: FontStyle.normal,
                 fontSize: 14 * h,
                 height: 1.38 * h,
@@ -91,7 +91,7 @@ class WeatherWidget extends StatelessWidget {
                         height: 80 * h,
                         width: 100 * h,
                         child: Image.asset(
-                          'assets/images/weather.png',
+                          'assets/images/weather_2.png',
                         ),
                       ),
                     ],
@@ -130,9 +130,9 @@ class WeatherWidget extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: AppTheme.fontFamily,
-                      fontWeight: FontWeight.normal,
+                      fontWeight: FontWeight.w600,
                       fontStyle: FontStyle.normal,
-                      fontSize: 12 * h,
+                      fontSize: 13 * h,
                       height: 1.5 * h,
                       letterSpacing: 0.3,
                       color: AppTheme.black,
@@ -145,9 +145,9 @@ class WeatherWidget extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: AppTheme.fontFamily,
-                      fontWeight: FontWeight.normal,
+                      fontWeight: FontWeight.w600,
                       fontStyle: FontStyle.normal,
-                      fontSize: 12 * h,
+                      fontSize: 13 * h,
                       height: 1.5 * h,
                       letterSpacing: 0.3,
                       color: AppTheme.black,
@@ -170,14 +170,14 @@ class WeatherWidget extends StatelessWidget {
                     children: [
                       getWeather(
                         context,
-                        "assets/images/weather.png",
+                        "assets/images/cloud.png",
                         "Облачность:",
                         "${info.clouds.all} %",
                         MainAxisAlignment.start,
                       ),
                       getWeather(
                         context,
-                        "assets/images/shamol.png",
+                        "assets/images/wind.png",
                         "Ветер:",
                         "${info.wind.speed} км/ч",
                         MainAxisAlignment.start,

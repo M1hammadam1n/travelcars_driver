@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: <Widget>[
                       const Text(
                         "Основные разделы",
                         style: TextStyle(
@@ -90,13 +90,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           fontSize: 20,
                           height: 1.4,
                           letterSpacing: 0.4,
-                          color: AppTheme.black,
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                       ),
                       const SizedBox(
                         height: 16,
                       ),
-                      getContainer(
+                      getContainer(                     
                         context,
                         "Всего заявок обработано: ",
                         tasks.data.done,
@@ -105,14 +105,20 @@ class _HomeScreenState extends State<HomeScreen> {
                           widget.onChange(0);
                         },
                       ),
+                      const SizedBox(
+                        height: 7,
+                      ),
                       getContainer(
                         context,
                         "Активные текущие заявки: ",
                         tasks.data.active,
-                        AppTheme.green,
+                        AppTheme.greenhomebutton,
                         (onChange) {
                           widget.onChange(1);
                         },
+                      ),
+                      const SizedBox(
+                        height: 6.5,
                       ),
                     ],
                   ),

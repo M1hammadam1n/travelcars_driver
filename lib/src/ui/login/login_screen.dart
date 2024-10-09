@@ -13,10 +13,9 @@ class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
-
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController _loginController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _loginController = TextEditingController(text: "muhammadamin");
+  final TextEditingController _passwordController = TextEditingController(text: "muhammadamin1");
   Repository repository = Repository();
   bool value = false;
 
@@ -65,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     top: 50,
                   ),
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(21),
                     color: AppTheme.lightGray,
@@ -92,22 +91,36 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: AppTheme.black,
                           ),
                         ),
-                        getTextEditController(
-                          context,
-                          _loginController,
-                          "Логин",
+                        // Поле для логина, отключено для редактирования
+                        TextField(
+                          controller: _loginController,
+                          enabled: false, // Отключаем редактирование
+                          decoration: InputDecoration(
+                            labelText: "Логин",
+                            labelStyle: TextStyle(
+                              color: AppTheme.black,
+                            ),
+                          ),
                         ),
-                        getTextEditController(
-                          context,
-                          _passwordController,
-                          "Пароль",
+                        const SizedBox(height: 16),
+                        // Поле для пароля, отключено для редактирования
+                        TextField(
+                          controller: _passwordController,
+                          enabled: false, // Отключаем редактирование
+                          decoration: InputDecoration(
+                            labelText: "Пароль",
+                            labelStyle: TextStyle(
+                              color: AppTheme.black,
+                            ),
+                          ),
                         ),
                         const SizedBox(
                           height: 22,
                         ),
                         GestureDetector(
                           onTap: () async {
-                            if (_loginController.text.isEmpty || _passwordController.text.isEmpty) {
+                            if (_loginController.text.isEmpty ||
+                                _passwordController.text.isEmpty) {
                               CenterDialog.simpleCenterDialog(
                                 context,
                                 "Ошибка",
@@ -151,6 +164,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
                           },
                           child: Container(
+                            height: 48,
                             width: MediaQuery.of(context).size.width,
                             padding: const EdgeInsets.symmetric(vertical: 10),
                             decoration: BoxDecoration(
@@ -159,21 +173,21 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             child: !value
                                 ? Center(
-                              child: Text(
-                                "Вход".toUpperCase(),
-                                style: const TextStyle(
-                                  fontFamily: AppTheme.fontFamily,
-                                  fontWeight: FontWeight.normal,
-                                  fontStyle: FontStyle.normal,
-                                  fontSize: 16,
-                                  height: 24 / 16,
-                                  color: AppTheme.white,
-                                ),
-                              ),
-                            )
+                                    child: Text(
+                                      "Вход".toUpperCase(),
+                                      style: TextStyle(
+                                        fontFamily: AppTheme.fontFamily,
+                                        fontWeight: FontWeight.normal,
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 16,
+                                        height: 48 / 48,
+                                        color: AppTheme.white,
+                                      ),
+                                    ),
+                                  )
                                 : const Center(
-                              child: CircularProgressIndicator(),
-                            ),
+                                    child: CircularProgressIndicator(),
+                                  ),
                           ),
                         ),
                       ],

@@ -190,7 +190,7 @@ class _MainScreenState extends State<MainScreen>
       bottomNavigationBar: AnimatedBottomNavigationBar.builder(
         itemCount: iconList.length,
         tabBuilder: (int index, bool isActive) {
-          final color = isActive ? AppTheme.blue : AppTheme.grey;
+          final color = isActive ? AppTheme.blue : const Color.fromARGB(255, 0, 0, 0);
           return Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,

@@ -137,7 +137,7 @@ class _TaskViewTwoScreenState extends State<TaskViewTwoScreen> {
             margin: EdgeInsets.only(
               left: 8 * w,
               right: 8 * w,
-              top: 16,
+              top: 14,
             ),
             padding: EdgeInsets.symmetric(horizontal: 8 * w, vertical: 8 * h),
             decoration: BoxDecoration(
