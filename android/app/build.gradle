@@ -49,8 +49,8 @@ android {
     defaultConfig {
         applicationId "uz.smart.travelcardrivers"
         minSdkVersion 21
-        targetSdkVersion 32
-        versionCode 7
+        targetSdkVersion 34
+        versionCode 9
         versionName '1.0.0'
     }
 

@@ -1,3 +1,4 @@
+// Импортируем необходимые пакеты
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_travelcars_driver/src/api/repository.dart';
@@ -13,16 +14,14 @@ class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
+
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController _loginController = TextEditingController(text: "muhammadamin");
-  final TextEditingController _passwordController = TextEditingController(text: "muhammadamin1");
+  final TextEditingController _loginController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   Repository repository = Repository();
   bool value = false;
 
-  @override
-  void initState() {
-    super.initState();
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -91,28 +90,15 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: AppTheme.black,
                           ),
                         ),
-                        // Поле для логина, отключено для редактирования
-                        TextField(
-                          controller: _loginController,
-                          enabled: false, // Отключаем редактирование
-                          decoration: InputDecoration(
-                            labelText: "Логин",
-                            labelStyle: TextStyle(
-                              color: AppTheme.black,
-                            ),
-                          ),
+                        getTextEditController(
+                          context,
+                          _loginController,
+                          "Логин",
                         ),
-                        const SizedBox(height: 16),
-                        // Поле для пароля, отключено для редактирования
-                        TextField(
-                          controller: _passwordController,
-                          enabled: false, // Отключаем редактирование
-                          decoration: InputDecoration(
-                            labelText: "Пароль",
-                            labelStyle: TextStyle(
-                              color: AppTheme.black,
-                            ),
-                          ),
+                        getTextEditController(
+                          context,
+                          _passwordController,
+                          "Пароль",
                         ),
                         const SizedBox(
                           height: 22,
@@ -175,7 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ? Center(
                                     child: Text(
                                       "Вход".toUpperCase(),
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontFamily: AppTheme.fontFamily,
                                         fontWeight: FontWeight.normal,
                                         fontStyle: FontStyle.normal,

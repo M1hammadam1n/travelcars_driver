@@ -60,18 +60,24 @@ class _TaskViewScreenState extends State<TaskViewScreen>
                   onTap: () {
                     Navigator.pop(context);
                   },
-                  child: const Icon(
-                    Icons.arrow_back_ios,
-                    color: AppTheme.white,
+                  child: Semantics(
+                    label: 'Назад',
+                    hint:
+                        'Вернуться на предыдущий экран', // Adding a helpful hint
+                    child: const Icon(
+                      Icons.arrow_back_ios,
+                      color: AppTheme.white,
+                    ),
                   ),
                 ),
                 const Spacer(),
                 Text(
                   "Текущая поездка".toUpperCase(),
                   style: TextStyle(
-                    fontWeight: FontWeight.normal,
-                    fontSize: 22 * h,
-                    height: 26 / 22 * h,
+                    fontFamily: AppTheme.fontFamily,
+                    fontWeight: FontWeight.w900,
+                    fontSize: 18 * h,
+                    height: 22 / 18 * h,
                     color: AppTheme.white,
                   ),
                 ),

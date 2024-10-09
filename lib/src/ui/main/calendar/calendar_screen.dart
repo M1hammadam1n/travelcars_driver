@@ -208,91 +208,101 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                         fontFamily: AppTheme.fontFamily,
                                         fontWeight: FontWeight.w600,
                                         fontStyle: FontStyle.normal,
-                                        fontSize: MediaQuery.of(context)
-                                                .size
-                                                .width *
-                                            0.035, 
+                                        fontSize:
+                                            MediaQuery.of(context).size.width *
+                                                0.035,
                                         height: 1.2,
                                         letterSpacing: 0.2,
                                         color: AppTheme.black,
                                       ),
                                     ),
                                     Transform.scale(
-                                      scale: 0.7,
-                                      child: CupertinoSwitch(
-                                        value: list[index].bookingId == 1
-                                            ? false
-                                            : change,
-                                        activeColor: AppTheme.green,
-                                        trackColor: list[index].bookingId == 1
-                                            ? Colors.red
-                                            : AppTheme.red,
-                                        onChanged: (on) async {
-                                          if (list[index].bookingId != 1) {
-                                            view1 = true;
-                                            setState(() {});
-                                            for (int i = 0;
-                                                i < list[index].data.length;
-                                                i++) {
-                                              if (list[index].data[i].status ==
-                                                  (on ? 0 : 1)) {
-                                                try {
-                                                  HttpResult response =
-                                                      await repository
-                                                          .changeStatus(
-                                                              list[index]
-                                                                  .data[i]
-                                                                  .id);
-                                                  if (response.isSuccess) {
-                                                    try {
-                                                      // ignore: unused_local_variable
-                                                      StatusModel datam =
-                                                          statusModelFromJson(
-                                                        json.encode(
-                                                            response.result),
-                                                      );
-                                                    } catch (e) {
-                                                      Fluttertoast.showToast(
-                                                        msg:
-                                                            "Статус не изменился",
-                                                        toastLength:
-                                                            Toast.LENGTH_SHORT,
-                                                        gravity:
-                                                            ToastGravity.BOTTOM,
-                                                        timeInSecForIosWeb: 1,
-                                                        backgroundColor:
-                                                            AppTheme.blue,
-                                                        textColor:
-                                                            AppTheme.white,
-                                                        fontSize: 16.0,
-                                                      );
+                                      scale:
+                                          0.7, // Сохранение масштаба для самого свитча
+                                      child: Container(
+                                        height:
+                                            48, // Увеличение высоты области для кликабельности
+                                        width:
+                                            48, // Увеличение ширины области для кликабельности
+                                        alignment: Alignment
+                                            .center, // Выравнивание по центру
+                                        child: CupertinoSwitch(
+                                          value: list[index].bookingId == 1
+                                              ? false
+                                              : change,
+                                          activeColor: AppTheme.green,
+                                          trackColor: list[index].bookingId == 1
+                                              ? Colors.red
+                                              : AppTheme.red,
+                                          onChanged: (on) async {
+                                            if (list[index].bookingId != 1) {
+                                              view1 = true;
+                                              setState(() {});
+                                              for (int i = 0;
+                                                  i < list[index].data.length;
+                                                  i++) {
+                                                if (list[index]
+                                                        .data[i]
+                                                        .status ==
+                                                    (on ? 0 : 1)) {
+                                                  try {
+                                                    HttpResult response =
+                                                        await repository
+                                                            .changeStatus(
+                                                                list[index]
+                                                                    .data[i]
+                                                                    .id);
+                                                    if (response.isSuccess) {
+                                                      try {
+                                                        // ignore: unused_local_variable
+                                                        StatusModel datam =
+                                                            statusModelFromJson(
+                                                                json.encode(
+                                                                    response
+                                                                        .result));
+                                                      } catch (e) {
+                                                        Fluttertoast.showToast(
+                                                          msg:
+                                                              "Статус не изменился",
+                                                          toastLength: Toast
+                                                              .LENGTH_SHORT,
+                                                          gravity: ToastGravity
+                                                              .BOTTOM,
+                                                          timeInSecForIosWeb: 1,
+                                                          backgroundColor:
+                                                              AppTheme.blue,
+                                                          textColor:
+                                                              AppTheme.white,
+                                                          fontSize: 16.0,
+                                                        );
+                                                      }
                                                     }
+                                                  } catch (e) {
+                                                    CenterDialog
+                                                        .simpleCenterDialog(
+                                                      context,
+                                                      "Ошибка",
+                                                      "У вас есть активный заказ или проверьте подключение к интернету.",
+                                                    );
+                                                    break;
                                                   }
-                                                } catch (e) {
-                                                  CenterDialog
-                                                      .simpleCenterDialog(
-                                                    context,
-                                                    "Ошибка",
-                                                    "У вас есть активный заказ или проверьте подключение к интернету.",
-                                                  );
-                                                  break;
                                                 }
                                               }
+                                              Fluttertoast.showToast(
+                                                msg: "Статус изменился",
+                                                toastLength: Toast.LENGTH_SHORT,
+                                                gravity: ToastGravity.BOTTOM,
+                                                timeInSecForIosWeb: 1,
+                                                backgroundColor: AppTheme.blue,
+                                                textColor: AppTheme.white,
+                                                fontSize: 16.0,
+                                              );
+                                              listBloc.getAllList(_selectedDay);
+                                              view1 = false;
+                                              setState(() {});
                                             }
-                                            Fluttertoast.showToast(
-                                              msg: "Статус изменился",
-                                              toastLength: Toast.LENGTH_SHORT,
-                                              gravity: ToastGravity.BOTTOM,
-                                              timeInSecForIosWeb: 1,
-                                              backgroundColor: AppTheme.blue,
-                                              textColor: AppTheme.white,
-                                              fontSize: 16.0,
-                                            );
-                                            listBloc.getAllList(_selectedDay);
-                                            view1 = false;
-                                            setState(() {});
-                                          }
-                                        },
+                                          },
+                                        ),
                                       ),
                                     ),
                                   ],

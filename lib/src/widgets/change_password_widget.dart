@@ -102,31 +102,33 @@ class ChangePasswordWidget extends StatelessWidget {
                 );
                 FocusScope.of(context).requestFocus(FocusNode());
               },
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.symmetric(vertical: 10 * h),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(40),
-                  color: AppTheme.blue,
-                ),
-                child: !circle
-                    ? Center(
-                        child: Text(
-                          "Изменить".toUpperCase(),
-                          style: TextStyle(
-                            fontFamily: AppTheme.fontFamily,
-                            fontWeight: FontWeight.normal,
-                            fontStyle: FontStyle.normal,
-                            fontSize: 16 * h,
-                            height: 24 / 16 * h,
-                            color: AppTheme.white,
-                          ),
-                        ),
-                      )
-                    : const Center(
-                        child: CircularProgressIndicator(),
-                      ),
-              ),
+              child:Container(
+  width: MediaQuery.of(context).size.width,
+  height: 48 * h, // Set fixed height
+  padding: EdgeInsets.symmetric(vertical: 10 * h), // Maintain some padding
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(40),
+    color: AppTheme.blue,
+  ),
+  child: !circle
+      ? Center(
+          child: Text(
+            "Изменить".toUpperCase(),
+            style: TextStyle(
+              fontFamily: AppTheme.fontFamily,
+              fontWeight: FontWeight.normal,
+              fontStyle: FontStyle.normal,
+              fontSize: 16 * h,
+              height: 24 / 16 * h,
+              color: AppTheme.white,
+            ),
+          ),
+        )
+      : const Center(
+          child: CircularProgressIndicator(),
+        ),
+),
+
             ),
           ],
         ),

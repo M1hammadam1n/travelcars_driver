@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_travelcars_driver/src/theme/app_theme.dart';
 import 'package:flutter_travelcars_driver/src/utils/utils.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -41,9 +40,7 @@ class ItemCalendar extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                SizedBox(
-                  width: 12 * h,
-                ),
+                SizedBox(width: 12 * h),
                 GestureDetector(
                   onTap: () {
                     change(DateTime.now().isBefore(DateTime(selectedDay.year,
@@ -52,11 +49,13 @@ class ItemCalendar extends StatelessWidget {
                             selectedDay.day)
                         : DateTime.now());
                   },
-                  child: SizedBox(
-                    height: 24 * h,
-                    width: 24 * w,
-                    child: const Icon(
-                      Icons.navigate_before,
+                  child: Semantics(
+                    label: 'Назад',
+                    hint: 'Перейти к предыдущему месяцу',
+                    child: SizedBox(
+                      height: 48 * h, // Set to at least 48dp
+                      width: 48 * h, // Set to at least 48dp
+                      child: const Icon(Icons.navigate_before),
                     ),
                   ),
                 ),
@@ -76,23 +75,21 @@ class ItemCalendar extends StatelessWidget {
                 const Spacer(),
                 GestureDetector(
                   onTap: () {
-                    change(selectedDay.add(
-                      const Duration(days: 30),
-                    ));
+                    change(selectedDay.add(const Duration(days: 30)));
                   },
-                  child: SizedBox(
-                    height: 25.5 * h,
-                    width: 25.5 * w,
-                    child: const Icon(
-                      Icons.navigate_next,
+                  child: Semantics(
+                    label: 'Вперед',
+                    hint: 'Перейти к следующему месяцу',
+                    child: SizedBox(
+                      height: 48 * h, // Set to at least 48dp
+                      width: 48 * h, // Set to at least 48dp
+                      child: const Icon(Icons.navigate_next),
                     ),
                   ),
-                )
+                ),
               ],
             ),
-            SizedBox(
-              height: 8 * h,
-            ),
+            SizedBox(height: 8 * h),
             TableCalendar(
               daysOfWeekVisible: false,
               headerVisible: false,
@@ -116,24 +113,22 @@ class ItemCalendar extends StatelessWidget {
                   color: AppTheme.blue,
                 ),
                 weekendTextStyle: TextStyle(
-                  fontWeight: FontWeight.w600, 
-                  fontSize: 16 * h, 
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16 * h,
                 ),
                 defaultTextStyle: TextStyle(
-                  fontWeight: FontWeight.w600, 
-                  fontSize: 16 * h, 
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16 * h,
                 ),
                 selectedTextStyle: TextStyle(
-                    fontWeight:
-                        FontWeight.w600, 
-                    fontSize: 16 * h,
-                    color: AppTheme.white 
-                    ),
-                outsideTextStyle: TextStyle(
-                  fontWeight: FontWeight
-                      .w400, 
+                  fontWeight: FontWeight.w600,
                   fontSize: 16 * h,
-                  color: AppTheme.black36, 
+                  color: AppTheme.white,
+                ),
+                outsideTextStyle: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16 * h,
+                  color: AppTheme.black36,
                 ),
               ),
             ),

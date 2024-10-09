@@ -1,4 +1,4 @@
- import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +30,7 @@ class _MainScreenState extends State<MainScreen>
   late AnimationController _animationController;
   late Animation<double> animation;
   late CurvedAnimation curve;
+
   List<String> text = [
     "Текущая поездка",
     "ИНФОРМАЦИЯ",
@@ -37,6 +38,7 @@ class _MainScreenState extends State<MainScreen>
     "Профиль водителя",
     "ЗАЯВКИ",
   ];
+
   final iconList = <String>[
     "assets/icons/home.svg",
     "assets/icons/info_svg.svg",
@@ -47,6 +49,7 @@ class _MainScreenState extends State<MainScreen>
   @override
   void initState() {
     super.initState();
+
     final systemTheme = SystemUiOverlayStyle.light.copyWith(
       systemNavigationBarColor: Colors.transparent,
       systemNavigationBarIconBrightness: Brightness.light,
@@ -79,9 +82,10 @@ class _MainScreenState extends State<MainScreen>
   }
 
   get() async {
-    FirebaseMessaging.onMessage.listen(
-      (RemoteMessage message) {},
-    );
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      // Log or handle foreground message
+      print("Message received: ${message.notification?.title}");
+    });
 
     FirebaseMessaging.onBackgroundMessage(
       (message) async {
@@ -95,20 +99,18 @@ class _MainScreenState extends State<MainScreen>
         );
       },
     );
-    FirebaseMessaging.onMessageOpenedApp.listen(
-      (RemoteMessage message) async {
-        if (message.notification!.body != null) {
-          await Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => OnlineTaskViewScreen(
-                id: message.data["id"],
-              ),
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) async {
+      if (message.notification!.body != null) {
+        await Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => OnlineTaskViewScreen(
+              id: message.data["id"],
             ),
-          );
-        }
-      },
-    );
+          ),
+        );
+      }
+    });
   }
 
   @override
@@ -137,14 +139,18 @@ class _MainScreenState extends State<MainScreen>
               color: AppTheme.blue,
             ),
             child: Center(
-              child: Text(
-                text[_bottomNavIndex].toUpperCase(),
-                style: TextStyle(
-                  fontFamily: AppTheme.fontFamily,
-                  fontWeight: FontWeight.normal,
-                  fontSize: 18 * h,
-                  height: 22 / 18 * h,
-                  color: AppTheme.white,
+              child: Semantics(
+                label:
+                    'Screen information: ${text[_bottomNavIndex].toUpperCase()}',
+                child: Text(
+                  text[_bottomNavIndex].toUpperCase(),
+                  style: TextStyle(
+                    fontFamily: AppTheme.fontFamily,
+                    fontWeight: FontWeight.w900,
+                    fontSize: 18 * h,
+                    height: 22 / 18 * h,
+                    color: AppTheme.white,
+                  ),
                 ),
               ),
             ),
@@ -173,24 +179,30 @@ class _MainScreenState extends State<MainScreen>
       ),
       floatingActionButton: ScaleTransition(
         scale: animation,
-        child: FloatingActionButton(
-          elevation: 8,
-          backgroundColor:
-              (_bottomNavIndex == 4) ? AppTheme.white : AppTheme.green,
-          child: Icon(
-            Icons.location_on,
-            color: (_bottomNavIndex == 4) ? AppTheme.blue : AppTheme.white,
+        child: Semantics(
+          label: 'Navigate to tasks', // Label for screen readers
+          button: true,
+          child: FloatingActionButton(
+            elevation: 8,
+            backgroundColor:
+                (_bottomNavIndex == 4) ? AppTheme.white : AppTheme.green,
+            child: Icon(
+              Icons.location_on,
+              color: (_bottomNavIndex == 4) ? AppTheme.blue : AppTheme.white,
+            ),
+            tooltip: 'Navigate to tasks', // Tooltip for accessibility
+            onPressed: () {
+              bottomTapped(4);
+            },
           ),
-          onPressed: () {
-            bottomTapped(4);
-          },
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar.builder(
         itemCount: iconList.length,
         tabBuilder: (int index, bool isActive) {
-          final color = isActive ? AppTheme.blue : const Color.fromARGB(255, 0, 0, 0);
+          final color =
+              isActive ? AppTheme.blue : const Color.fromARGB(255, 0, 0, 0);
           return Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -201,6 +213,7 @@ class _MainScreenState extends State<MainScreen>
                 child: SvgPicture.asset(
                   iconList[index],
                   color: color,
+                  semanticsLabel: text[index], // Add label for accessibility
                 ),
               ),
             ],
@@ -224,7 +237,7 @@ class _MainScreenState extends State<MainScreen>
     );
   }
 
-  bottomTapped(int index) {
+  void bottomTapped(int index) {
     _bottomNavIndex = index;
     _pageController.jumpToPage(index);
 
